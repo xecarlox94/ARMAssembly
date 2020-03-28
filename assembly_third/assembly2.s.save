@@ -1,0 +1,25 @@
+.global _start
+
+_start:
+	LDR R0, =tens
+	MOV R1, #10
+	MOV R2, #1
+	MOV R3, #10
+
+	BL _pow
+
+_pow:	SUB R3, #1
+	CMP R3, #0
+	BEQ _endP
+
+	MUL R2, R1
+
+
+_endP:  BX LR
+
+
+.data
+tens:
+	.rept 10
+	.word 0x00
+	.endr
