@@ -1,7 +1,11 @@
-.global _start
+.global main
 
 
-_start:
+.global printf
+
+.global scanf
+
+main:
 	LDR R0, =f1
 	BL printf
 
@@ -26,12 +30,7 @@ _print:
 
 _exit:
 	MOV R7, #1
-	SIW 0
-
-
-.global printf
-
-.global scanf
+	SWI 0
 
 .data
 f1: .asciz "How many beans make 5? "
