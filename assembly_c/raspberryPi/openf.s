@@ -1,11 +1,13 @@
 .global openf
 
 openf:
-	PUSH { LR }
 	
 	LDR	R0, .addr_file		@ get GPIO Controller addr
 	LDR	R1, .flags		@ set flag permissions
 	
+
+	PUSH { LR }
+
 	BL	open			@ call to get file handle
 	
 	POP { LR }

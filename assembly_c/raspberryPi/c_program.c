@@ -24,7 +24,7 @@ int main(void)
 	printf("file handler: %d\n", fd);
 	
 	
-	gpio = (uint32_t *)mapm(fd);
+	gpio = (uint32_t *) mapm(fd);
 	
 	
 	printf("gpio address: %d\n", (int) gpio);
