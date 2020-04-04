@@ -17,8 +17,8 @@ levbit:
 	
 	LSR R3, R1		@ right logical shift to move bit to beginning
 	
-	AND R1, #0b1	@ get first bit
+	AND R3, #0b1	@ get first bit
 	
-	MOV R0, R1		@ return bit value
+	MOV R0, R3		@ return bit value
 
 	BX LR
