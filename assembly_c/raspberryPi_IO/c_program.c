@@ -3,6 +3,26 @@
 #include <stdlib.h>
 
 
+
+/*
+
+gcc -c -o mgpio.o mgpio.s
+gcc -c -o mtimer.o mtimer.s
+gcc -c -o openf.o openf.s
+gcc -c -o closef.o closef.s
+
+as -c -o aux/fclr.o aux/fclr.s
+as -c -o aux/flev.o aux/flev.s
+as -c -o aux/fsel.o aux/fsel.s
+as -c -o aux/fset.o aux/fset.s
+
+gcc -c -o c_program.o c_program.c
+
+gcc -o program c_program.o aux/fset.o aux/fsel.o aux/flev.o aux/fclr.o closef.o openf.o mgpio.o mtimer.o
+
+*/
+
+
 extern int openf(void);
 
 extern void closef(int fd);
@@ -82,13 +102,14 @@ int main(void)
 			
 			if (i % 2 == 0)
 			{
-				fset(gpio,13,1);
 				fset(gpio,5,1);
+				fclr(gpio,13);
 			} else 
 			{
-				fclr(gpio,13);
 				fclr(gpio,5);
+				fset(gpio,13,1);
 			}
+			delay(50);
 		}
 		delay(100);
 	}
